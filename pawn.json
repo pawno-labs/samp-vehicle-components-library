@@ -1,0 +1,7 @@
+{
+	"user": "pawno-labs",
+	"repo": "samp-vehicle-components-library",
+	"entry": "example.pwn",
+	"output": "example.amx",
+	"dependencies": ["sampctl/samp-stdlib"]
+}
