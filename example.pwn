@@ -4,22 +4,25 @@
 
 main() 
 {
-    new modelid, componentid, array[MAX_VEHICLE_COMPONENTS];
+    new modelid, componentid, count, array[MAX_VEHICLE_COMPONENTS], name[MAX_VEHICLE_COMPONENT_NAME];
 
     for (new i; i < MAX_VEHICLES_MODELS; i++)
     {
         modelid = i + 400;
 
-        if (IsVehicleHaveUpgrades(modelid)) {
-            GetVehicleCompatibleUpgrades(modelid, array, sizeof(array));
+        if (DoesVehicleHaveUpgrades(modelid)) {
+            GetVehicleCompatibleUpgrades(modelid, array, sizeof(array), count);
         }
 
-        for (new j; j < MAX_VEHICLE_COMPONENTS; j++)
+        for (new j; j < count; j++)
         {
             componentid = array[j];
 
-            if (IsVehicleUpgradeCompatible(modelid, componentid)) {
-                printf("Modelid: %d, Componentid: %d, Name: %s, Cost: %d", modelid, componentid, GetVehicleComponentName(componentid), GetVehicleComponentCost(componentid));
+            if (IsVehicleUpgradeCompatible(modelid, componentid))
+            {
+                GetVehicleComponentName(componentid, name, sizeof(name));
+
+                printf("Modelid: %d, Componentid: %d, Name: %s, Cost: %d", modelid, componentid, name, GetVehicleComponentCost(componentid));
             }
         }
     }

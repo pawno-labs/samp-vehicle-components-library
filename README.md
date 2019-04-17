@@ -58,10 +58,14 @@ public OnVehicleMod(playerid, vehicleid, componentid)
 
     if (IsVehicleUpgradeCompatible(modelid, componentid))
     {
-        new str[144];
+        new
+            name[64],
+            string[144];
 
-        format(str, sizeof(str), "You have successfully installed \"%s\"", GetVehicleComponentName(componentid));
-        SendClientMessage(playerid, -1, str);
+        GetVehicleComponentName(componentid, name, sizeof(name));
+
+        format(string, sizeof(string), "You have successfully installed \"%s\"", name);
+        SendClientMessage(playerid, -1, string);
     }
     return 1;
 }
